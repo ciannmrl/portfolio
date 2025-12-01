@@ -69,13 +69,55 @@ nav ul li a {
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    
+    /* CONSERVATION DE L'EFFET DE ZOOM */
+    transition: transform 0.3s, background 0.3s; /* IMPORTANT pour l'animation */
+    
+    /* MAINTENIR POUR LE POSITIONNEMENT DE L'INFO BULLE */
+    position: relative; 
+    z-index: 1; /* Assurez-vous qu'elle est au-dessus des autres éléments */
 }
 
 .stage:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* CONSERVE LE ZOOM */
     background: #e0e0e0;
 }
 
+/* Style de l'infobulle (par défaut invisible) */
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    
+    /* Style de la boîte */
+    width: 250px;
+    background-color: #333; /* Couleur plus foncée pour le contraste */
+    color: white;
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+    
+    /* Positionnement */
+    position: absolute;
+    z-index: 99; /* Très élevé pour s'assurer qu'il est toujours visible */
+    
+    /* Placement : juste en dessous de la case */
+    top: 100%; /* Positionné juste en bas du .stage */
+    margin-top: 10px; /* Ajoute un petit espace entre la boîte et l'infobulle */
+    left: 50%;
+    transform: translateX(-50%); /* Centre horizontalement */
+    
+    /* Optionnel : transition pour une apparition/disparition plus agréable */
+    transition: opacity 0.3s;
+    
+    /* Pour éviter que le zoom du parent ne le déplace trop */
+    pointer-events: none; /* Empêche l'infobulle elle-même de déclencher un survol */
+}
+
+/* Afficher l'infobulle au survol du .stage */
+.stage:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 .skill {
     background: white;
     padding: 20px;
