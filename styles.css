@@ -118,6 +118,12 @@ nav ul li a {
     visibility: visible;
     opacity: 1;
 }
+
+/* Afficher l'infobulle au clic sur mobile */
+.stage.active .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
 .skill {
     background: white;
     padding: 20px;

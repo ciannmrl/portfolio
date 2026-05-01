@@ -75,5 +75,29 @@
 	<br>
 		<a href="https://beacons.ai/usrx.cnn" target="_blank">Mes liens</a>
     </footer>
+
+    <script>
+        // Gestion des clics sur les stages pour afficher/masquer le tooltip sur mobile
+        document.querySelectorAll('.stage').forEach(stage => {
+            stage.addEventListener('click', function(e) {
+                // Fermer les autres tooltips
+                document.querySelectorAll('.stage').forEach(s => {
+                    if (s !== this) {
+                        s.classList.remove('active');
+                    }
+                });
+                // Basculer le tooltip du stage cliqué
+                this.classList.toggle('active');
+                e.stopPropagation();
+            });
+        });
+
+        // Fermer les tooltips quand on clique ailleurs
+        document.addEventListener('click', function() {
+            document.querySelectorAll('.stage.active').forEach(stage => {
+                stage.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
