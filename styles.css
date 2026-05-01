@@ -78,6 +78,10 @@ nav ul li a {
     z-index: 1; /* Assurez-vous qu'elle est au-dessus des autres éléments */
 }
 
+.stage.active {
+    z-index: 1000;
+}
+
 .stage:hover {
     transform: scale(1.05); /* CONSERVE LE ZOOM */
     background: #e0e0e0;
